@@ -134,7 +134,7 @@ function loadSplash() {
         
     }
 
-    loadPalette('default');
+    //loadPalette('default');
     draw();
 }
 

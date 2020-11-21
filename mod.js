@@ -1,5 +1,5 @@
 var mods = new Map();
-var currMod = "v2.0.0";
+var currMod = "0";
 
 function loadMod(mod) {
     console.log("loading mod "+mod);
@@ -21,18 +21,22 @@ function stripLeds(modstring) {
     return JSON.stringify(mod);
 }
 
-function addMod(version, json) {
-    mods.set(version, {
-            version: version,
-            json: json,
+function addMod(id, json) {
+    mods.set(id, {
+            id: id,
+            name: json.name,
+            version: json.version,
+            json: json.data,
+            author: json.author
     });
-
+    /*
     mods.set(version+"-splash", {
         version: version+"-splash",
         json: stripLeds(json),
     })
+    */
 }
 
-function getCurrentMod(splash = false) {
-    return mods.get(currMod+(splash?"-splash":""));
+function getCurrentMod() {
+    return mods.get(currMod);
 }
