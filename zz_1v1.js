@@ -7,9 +7,9 @@ window.WLROOM.onPlayerJoin = (player) => {
 	}
 	auth.set(player.id, player.auth);
 	writeLogins(player);
-
+	let mod = getCurrentMod();
 	announce("Welcome to the 1v1 room!", player, 0xFF2222, "bold");
-	announce("current mod is `"+currMod.name+"` version `"+currMod.version+"` by `"+currMod.author+"`", player, 0xDD2222);
+	announce("current mod is `"+mod.name+"` version `"+mod.version+"` by `"+mod.author+"`", player, 0xDD2222);
 
 	if (isFull()) {
 		announce("game is running already, if you want to play next type !join", player, 0xDD2222);
@@ -46,6 +46,7 @@ window.WLROOM.onPlayerChat = function (p, m) {
 
 window.WLROOM.onGameEnd = function() {		
     if (!hasActivePlayers()) {
+		console.log("end no active player")
 		loadSplash();
 		return;
 	}
